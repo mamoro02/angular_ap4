@@ -1,0 +1,37 @@
+<!-- Pescados -->
+<!-- Fotos para pescados:
+          'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2017/10/19/15084107521488.jpg'
+          'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2017/10/19/15084107530435.jpg'
+          'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2017/10/19/15084107493872.jpg'
+          'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2017/10/19/15084107503223.jpg'
+          'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2017/10/19/15084107517092.jpg'
+          'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2017/10/19/15084107498663.jpg'
+    -->
+<main class="content">
+    <section>
+        <div class="grid">
+            @for (item of fish; track item.title) {
+            <app-card (info)="onClick($event)" [title]="item.title" [photo]="item.photo"></app-card>
+            }
+        </div>
+
+        <div class="grid" [ngStyle]="{ 'display': 'none' }">
+            <!-- Componente Article-->
+            <main class="content">
+                <section>
+                    <div class="grid">
+                        @for (item of fish; track item.title) {
+                        <app-article [title]="item.title" [description]="item.description"
+                            [photo]="item.photo"></app-article>
+                        }
+                    </div>
+                </section>
+            </main>
+        </div>
+
+    </section>
+
+
+    <app-modal></app-modal>
+
+</main>
