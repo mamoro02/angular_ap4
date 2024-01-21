@@ -11,27 +11,25 @@
     <section>
         <div class="grid">
             @for (item of fish; track item.title) {
-            <app-card (info)="onClick($event)" [title]="item.title" [photo]="item.photo"></app-card>
+            <app-card [ngStyle]="{'display': bool ? 'block': 'none'}" (info)="onClick($event)" [title]="item.title"
+                [photo]="item.photo"></app-card>
             }
         </div>
 
-        <div class="grid" [ngStyle]="{ 'display': 'none' }">
-            <!-- Componente Article-->
-            <main class="content">
-                <section>
-                    <div class="grid">
-                        @for (item of fish; track item.title) {
-                        <app-article [title]="item.title" [description]="item.description"
-                            [photo]="item.photo"></app-article>
-                        }
-                    </div>
-                </section>
-            </main>
-        </div>
+
+        <!-- Componente Article-->
+        <main class="content">
+            <section>
+                <div class="grid">
+                    <app-article (data)="onTouch($event)" [ngStyle]="{'display': bool?'none':'block'}" [title]="title"
+                        [description]="description" [photo]="photo"></app-article>
+                </div>
+            </section>
+        </main>
+
 
     </section>
 
-
-    <app-modal></app-modal>
+    <app-modal (closeModal)="onCloseModal($event)" [modal]="modal" [title]="title" [photo]="photo"></app-modal>
 
 </main>

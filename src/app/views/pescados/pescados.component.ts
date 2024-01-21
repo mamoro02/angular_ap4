@@ -15,11 +15,14 @@ export class PescadosComponent {
   public title: string = '';
   public photo: string = '';
   public description: string = '';
+  public modal: string = 'modal';
+  public bool: boolean = true;
+
 
   public fish: { title: string; description: string; photo: string }[] = [
     {
       title: "Rodaballo",
-      description: 'Lechugas frescas del día',
+      description: 'Rodaballo fresco',
       photo: "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2017/10/19/15084107521488.jpg"
     },
     {
@@ -50,18 +53,26 @@ export class PescadosComponent {
   ];
 
   public onClick(info: { title: string, photo: string }): void {
-    this.title=info.title;
-    this.photo=info.photo
-    
-    alert(this.title);
-    alert(this.photo);
+    this.title = info.title;
+    this.photo = info.photo
 
     this.fish.forEach(data => {
       if (data.title === info.title) {
-        this.description=data.description;
-        alert(this.description);
+        this.description = data.description;
+        this.bool = false;
       }
     });
+  }
+
+  public onTouch(data: { title: string, photo: string }): void {
+    this.title = data.title;
+    this.modal = 'modal show-modal';
+    this.photo = data.photo;
+  }
+
+  public onCloseModal(modal: string): void {
+    this.modal = modal;
+    this.bool = true;
   }
 
 }
